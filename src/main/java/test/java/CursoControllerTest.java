@@ -3,14 +3,17 @@ import java.sql.SQLException;
 
 import View.ConsoleView;
 import controller.ControllerCurso;
-import org.junit.jupiter.api.BeforeEach;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Mock;
+
 import da.CursosDao;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 
 public class CursoControllerTest {
 
