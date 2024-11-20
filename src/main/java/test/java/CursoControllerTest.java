@@ -63,7 +63,7 @@ public class CursoControllerTest {
     @Test
     public void testEliminarCursos() throws SQLException {
 
-        String id = "5";
+        String id = "1";
 
         doNothing().when(mockCursosDao).eliminarCurso(id);
 
