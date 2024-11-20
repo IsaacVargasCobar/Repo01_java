@@ -12,13 +12,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         System.out.println("Proyecto Conectando MySQL");
-
         ConsoleView console = new ConsoleView();
         ConexionController controlador = new ConexionController(console);
         controlador.abrirConexion();
 
-
-
+        
         String eleccion = "0";
         do {
             System.out.println("1- Gestionar Curso \n 2- Gestionar Estudiante \n 3- Gestionar Profesor \n 4- Gestionar Grupo   \nS- Salir");

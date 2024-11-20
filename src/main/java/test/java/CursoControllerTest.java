@@ -5,14 +5,14 @@ import View.ConsoleView;
 import controller.ControllerCurso;
 
 import da.CursosDao;
+import models.ModelCurso;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 public class CursoControllerTest {
@@ -37,9 +37,40 @@ public class CursoControllerTest {
 
         controllerCurso.obtenerCursos();
 
-        verify(mockView).mostrarMensaje("id: 3 | nombre: Matematicas | descripcion: C32024 | estado: Inactivo");
+        verify(mockView).mostrarMensaje("id: 5 | nombre: Grupoa | descripcion: descriopcionGrupo | estado: inactivo");
 
     }
+
+    @Test
+    public void testModificarCursos() throws SQLException {
+
+        String id = "5";
+        String nombre = "Grupoa";
+        String descripcion = "descriopcionGrupo";
+        String estado = "Inactivo";
+
+        ModelCurso mockCurso = new ModelCurso(nombre, descripcion, estado);
+        mockCurso.setId(id);
+
+        doNothing().when(mockCursosDao).modificarCurso(mockCurso);
+
+
+        controllerCurso.modificarCursos(nombre, descripcion, estado, id);
+
+
+        verify(mockView).mostrarMensaje("Datos actualizados");
+    }
+    @Test
+    public void testEliminarCurso() throws SQLException {
+
+        String id = "5";
+
+        doNothing().when(mockCursosDao).eliminarCurso(id);
+
+        controllerCurso.eliminarCurso(id);
+        verify(mockView).mostrarMensaje("Curso eliminado correctamente");
+    }
+
 
 }
 
