@@ -61,7 +61,7 @@ public class CursoControllerTest {
         verify(mockView).mostrarMensaje("Datos actualizados");
     }
     @Test
-    public void testEliminarCurso() throws SQLException {
+    public void testEliminarCursos() throws SQLException {
 
         String id = "5";
 
