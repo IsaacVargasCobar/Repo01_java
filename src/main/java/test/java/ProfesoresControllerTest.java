@@ -70,10 +70,32 @@ public class ProfesoresControllerTest {
 
         String id = "1";
 
-        doNothing().when(controllerProfesor).eliminarProfesores(id);
+        doNothing().when(mockProfesoresDao).eliminarProfesores(id);
 
         controllerProfesor.eliminarProfesores(id);
         verify(mockView).mostrarMensaje("Profesor eliminado correctamente");
     }
+    @Test
+    public void testCrearEstudiantes() throws SQLException {
 
+
+
+        String nombre = "Moises";
+        String identificacion = "8000";
+        String email = "MoisesEmial.com";
+        String estado = "Activo";
+        String departamento = "Informatica";
+
+        ModelProfesor mockProfesor = new ModelProfesor(nombre, identificacion, email, estado,departamento);
+
+
+        doNothing().when(mockProfesoresDao).agregarProfesores(mockProfesor);
+
+
+        controllerProfesor.agregarProfesores(nombre, identificacion, email, estado,departamento);
+
+
+        verify(mockView).mostrarMensaje("Datos insertados");
+
+    }
 }

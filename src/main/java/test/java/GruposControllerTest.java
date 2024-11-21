@@ -3,6 +3,7 @@ package test.java;
 import View.ConsoleView;
 import controller.ControllerGrupo;
 import da.GruposDao;
+import models.ModelCurso;
 import models.ModelGrupo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,13 +60,31 @@ public class GruposControllerTest {
     @Test
     public void testEliminarGrupos() throws SQLException {
 
-        String id = "1";
+        String id = "5";
 
         doNothing().when(mockGruposDao).eliminarGrupo(id);
 
         controllerGrupo.eliminarGrupo(id);
         verify(mockView).mostrarMensaje("Grupo eliminado correctamente");
     }
+    @Test
+    public void testCrearGrupos() throws SQLException {
 
+
+        String nombre = "NuevogrupoTEST";
+        String descripcion = "NuevogrupoTEST";
+        String estado = "NuevogrupoTEST";
+
+        ModelGrupo mockGrupo = new ModelGrupo(nombre, descripcion, estado);
+
+        doNothing().when(mockGruposDao).agregarGrupo(mockGrupo);
+
+
+        controllerGrupo.agregarGrupos(nombre, descripcion, estado);
+
+
+
+        verify(mockView).mostrarMensaje("Datos insertados");
+    }
 
 }

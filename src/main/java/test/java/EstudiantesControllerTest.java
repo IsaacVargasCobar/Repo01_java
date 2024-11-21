@@ -73,4 +73,26 @@ public class EstudiantesControllerTest {
         verify(mockView).mostrarMensaje("Estudiante eliminado correctamente");
     }
 
+
+
+    @Test
+    public void testCrearEstudiantes() throws SQLException {
+
+
+        String nombre = "NuevaEstudiante";
+        String identificacion = "identificacionNueva";
+        String email = "EmailNuevo";
+        String estado = "Activo";
+        String fechaNacimiento = "nuevaFecha";
+
+        ModelEstudiante mockEstudiante = new ModelEstudiante(nombre, identificacion, email, estado,fechaNacimiento);
+
+        doNothing().when(mockEstudiantesDao).agregarEstudiantes(mockEstudiante);
+
+        controllerEstudiante.agregarEstudiantes(nombre, identificacion, email, estado,fechaNacimiento);
+
+
+        verify(mockView).mostrarMensaje("Datos insertados");
+
+    }
 }

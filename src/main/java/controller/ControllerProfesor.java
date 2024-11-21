@@ -51,7 +51,7 @@ public class ControllerProfesor {
     public void eliminarProfesores(String id) {
         try {
             profesoresDao.eliminarProfesores(id);
-            conexionView.mostrarMensaje("Estudiante eliminado correctamente");
+            conexionView.mostrarMensaje("Profesor eliminado correctamente");
         } catch (SQLException e) {
             conexionView.mostrarError("Fallo al eliminar: " + e.getMessage());
         }

@@ -53,7 +53,7 @@ public class ControllerGrupo {
 
         try {
              gruposDao.eliminarGrupo(id);
-            conexionView.mostrarMensaje("Curso eliminado correctamente");
+            conexionView.mostrarMensaje("Grupo eliminado correctamente");
         } catch (SQLException e) {
             conexionView.mostrarError("Fallo al eliminar: " + e.getMessage());
         }

@@ -71,6 +71,29 @@ public class CursoControllerTest {
         verify(mockView).mostrarMensaje("Curso eliminado correctamente");
     }
 
+    @Test
+    public void testCrearCursos() throws SQLException {
+
+
+        String nombre = "NUEVAMATERIA2";
+        String descripcion = "DescripcionNueva";
+        String estado = "Activo";
+
+        ModelCurso mockCurso = new ModelCurso(nombre, descripcion, estado);
+
+
+
+        doNothing().when(mockCursosDao).agregarCurso(mockCurso);
+
+
+        controllerCurso.agregarCursos(nombre, descripcion, estado);
+
+
+        verify(mockView).mostrarMensaje("Datos insertados");
+    }
+
+
+
 
 }
 
